@@ -27,6 +27,9 @@ setup(
     include_package_data=True,
     zip_safe=False,
     classifiers=[
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Natural Language :: English',
         'Intended Audience :: Developers',
