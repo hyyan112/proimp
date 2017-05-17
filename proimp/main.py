@@ -59,7 +59,7 @@ def main():
     for k, v in modules.items():
         data_mod.append(v.to_json())
     data['nodes'] = data_mod
-    with open('../proimp/templates/dependencies.html', encoding='utf-8') as f:
+    with open('./templates/dependencies.html', encoding='utf-8') as f:
         l = f.read()
         d = json.dumps(data)
         r = l.replace('{{results}}', d)
