@@ -19,6 +19,9 @@ setup(
     description='proimp - generates import dependencies',
     long_description=readme,
     author='yan huang',
+    entry_points={'console_scripts': [
+        'proimp = proimp.main:main',
+    ]},
     author_email='leafyongzhong@gmail.com',
     packages=packages,
     include_package_data=True,

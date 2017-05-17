@@ -12,6 +12,7 @@ _from_import = re.compile('from\s(.*)\simport\s(.*)')
 
 edges = {}
 modules = {}
+root = ''
 
 
 def find(py_file):
@@ -44,9 +45,11 @@ def loop(my_root):
                 find(subfile)
 
 
-if __name__ == '__main__':
-    root = sys.argv[1]
-    loop(root)
+def main():
+    r = sys.argv[1]
+    global root
+    root = r
+    loop(r)
     data_edg = []
     data_mod = []
     data = {}
@@ -62,3 +65,7 @@ if __name__ == '__main__':
         r = l.replace('{{results}}', d)
     with open('./output.html', 'w+', encoding='utf-8') as f:
         f.write(r)
+
+
+if __name__ == '__main__':
+    main()
