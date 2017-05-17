@@ -59,7 +59,8 @@ def main():
     for k, v in modules.items():
         data_mod.append(v.to_json())
     data['nodes'] = data_mod
-    with open('./templates/dependencies.html', encoding='utf-8') as f:
+    fp = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates/dependencies.html')
+    with open(fp, encoding='utf-8') as f:
         l = f.read()
         d = json.dumps(data)
         r = l.replace('{{results}}', d)
