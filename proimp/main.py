@@ -3,6 +3,7 @@ import json
 import os
 import re
 import sys
+from io import open
 
 from proimp.model import Module, Edge
 
@@ -16,7 +17,7 @@ root = ''
 
 
 def find(py_file):
-    with open(py_file, encoding='utf-8') as f:
+    with open(py_file) as f:
         r = f.read()
     fi = _from_import.findall(r)
     source = py_file.split(root)[1].replace('/', '.').replace('.', '', 1).replace('.py', '')
@@ -60,11 +61,11 @@ def main():
         data_mod.append(v.to_json())
     data['nodes'] = data_mod
     fp = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates/dependencies.html')
-    with open(fp, encoding='utf-8') as f:
+    with open(fp) as f:
         l = f.read()
         d = json.dumps(data)
         r = l.replace('{{results}}', d)
-    with open('./output.html', 'w+', encoding='utf-8') as f:
+    with open('./output.html', 'w+') as f:
         f.write(r)
 
 
